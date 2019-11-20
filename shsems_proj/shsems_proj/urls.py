@@ -20,7 +20,7 @@ from users.views import ParticipantCreateView, HomePageView
 urlpatterns = [
     path('admin/', admin.site.urls),    
     path('users/', include("django.contrib.auth.urls")),
-    path('signup/', ParticipantCreateView.as_view()),
+    path('signup/', ParticipantCreateView.as_view(), name = "signup_page"),
     path('events/', include("events.urls")),
     path('home_page/', HomePageView.as_view(), name = "home_page"),
 ]

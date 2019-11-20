@@ -23,13 +23,16 @@
         left: 1010px;
         width: 100px;
       }
+      a{
+        margin-left: 10px;
+      }
     </style>
 
   </head>
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" >Welcome</a>
+      <a class="navbar-brand" >Event Management System</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -43,19 +46,26 @@
             <a class="nav-link" href="{% url 'events_list' %}">Events</a>
           </li>
         </ul>
-        <form class="form-inline my-4 my-lg-0">
-            <button type ="submit" class="btn btn-info" >Login</button>
-            <a class="account-dialog-link" href=""></a>
-            <button type ="submit" class="btn btn-info" >Signup</button>
-            <a class="account-dialog-link" href=""></a>
+        {% if user.is_authenticated %}
+          <form class="form-inline my-4 my-lg-0"> 
+            <a>{{ user }}</a> 
+            <a href="{% url 'logout' %}">Log Out</a>
           </form>
+        {% else %}
+          <form class="form-inline my-4 my-lg-0"> 
+            <a href="{% url 'signup_page' %}">Sign Up</a> 
+            <a href="{% url 'login' %}">Login</a> 
+          </form>
+        {% endif %}
       </div>
     </nav>
      
+    <div class="container">
+        {% block content %}
 
-      {% block content %}
-
-      {% endblock %} 
+        {% endblock %} 
+    </div>
+      
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
