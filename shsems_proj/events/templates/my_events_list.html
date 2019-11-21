@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} My Events {% endblock %}
+
+{% block content %}
+
+<h1 style="color: white;">Events Created</h1>
+
+<input class="form-control" id="addBtn" type="button" value="Add Event">
+<div class="card">
+    
+    {% for event in object_list %}
+
+    <div class="card-body shadow p-3 mb-2 bg-light rounded">
+        <h4 class="card-title">{{ event }}</h4>
+        
+        <p class="card-text">
+                {{ event.description }}
+        </p>
+        
+        <a href="{% url 'event_detail' event.pk %}">See more</a>
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+

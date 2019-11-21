@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block title %} Login {% endblock %}
 
 {% block content %}
@@ -8,14 +10,14 @@
 
         <div class="row">
 
-            <div class="col-lg-4"></div>
-            <div class="col-lg-4">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
                 <div class="card ">
                     <div class="card-header bg-info"> Please sign in </div>
                     <div class="card-body">
                         <form method="post">
                             {% csrf_token %}
-                            {{ form.as_p }}
+                            {{ form | crispy }}
                             <div>
                                 <input type="submit" class="btn btn-info" value="Sign In"> </input>
                             </div>
@@ -23,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4"></div>
+            <div class="col-lg-2"></div>
 
         </div>
        

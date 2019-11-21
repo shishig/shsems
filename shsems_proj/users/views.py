@@ -7,8 +7,7 @@ from .forms import ParticipantCreationForm
 class ParticipantCreateView(CreateView):
     form_class = ParticipantCreationForm
     template_name = 'signup.html'
-    success_url = 'login'
+    success_url = reverse_lazy('login')
 
-class HomePageView(TemplateView):
-   template_name = 'home.html'
+
 
