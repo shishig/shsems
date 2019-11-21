@@ -2,7 +2,7 @@
 
 {% load crispy_forms_tags %}
 
-{% block title %} Create Event {% endblock %}
+{% block title %} New Registration {% endblock %}
 
 {% block content %}
 
@@ -10,15 +10,14 @@
         <div class="col-lg-10 mx-auto"> 
             <div class="card">
                 <div class="card-body">
-                <h4 class="card-title">Event Details</h4>
+                <h4 class="card-title">Registration Details</h4>
                 <p class="card-text">
-                    Please provide correct info for the new Event.
+                    Please provide the following documents for your registration to proceed
                 </p>
-                
                 <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }} 
-                <input type="submit" class="btn btn-primary" name="submit" value="Create" />
+                <input type="submit" class="btn btn-primary" name="submit" value="Save" />
                 </form>
                 </div>
             </div>

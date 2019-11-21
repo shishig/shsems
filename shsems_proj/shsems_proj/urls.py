@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
 from users.views import ParticipantCreateView
+from django.conf import settings
 
 
 urlpatterns = [
@@ -24,4 +26,6 @@ urlpatterns = [
     path('users/', include("django.contrib.auth.urls")),
     path('signup/', ParticipantCreateView.as_view(), name = "signup"),
     path('events/', include("events.urls")),
-]
+    path('registrations/', include("registrations.urls")),
+
+]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

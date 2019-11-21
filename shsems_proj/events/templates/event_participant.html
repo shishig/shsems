@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} Event List {% endblock %}
+
+{% block content %}
+
+    <h1>{{ event }}</h1>
+    <p> Start Date of the Event: {{ event.date_from }} Ends on: {{ event.date_to }}</p>
+    <p> Start Time of the Event: {{ event.time_from }} to {{ event.time_to }}</p>
+    
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+            <th>Username</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in object_list %}
+                <tr>
+                   <td>{{ event.all_participants }}</td>
+                   <td>{{ event.f_participants }}</td>
+                   <td>{{ event.l_participants }}</td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+
+    <div class="card-body shadow p-3 mb-2 bg-light rounded">
+        
+
+    </div>
+   
+</div>
+
+{% endblock %}
+
+

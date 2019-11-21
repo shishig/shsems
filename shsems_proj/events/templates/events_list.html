@@ -12,14 +12,25 @@
 
     <div class="card-body shadow p-3 mb-2 bg-light rounded">
         <h4 class="card-title">{{ event }}</h4>
+
+        {% if event.poster %}        
+        <img width="100px" src="/media/{{ event.poster }}" />
+        {% else %}    
+        {% endif %}    
+
         
         <p class="card-text">
                 {{ event.description }}
         </p>
-        
-        <a href="{% url 'event_detail' event.pk %}">See more</a>
+
+        {% if user.username in event.all_participants %}
+        {% else %}
+        <a class="btn btn-outline-success" href="{% url 'registration_create' event.pk %}" class="card-link">Join</a>
+        {% endif %}
+        <a class="btn btn-outline-primary" href="{% url 'event_detail' event.pk %}">See more</a>
 
         <div class="card-footer"> 
+            <p>No. of participants: {{ event.all_participants | length }}</p>
             <p> Creator: {{ event.creator }} </p>
         </div>
 
