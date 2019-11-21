@@ -7,3 +7,5 @@ class ParticipantCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Participant
         fields = ('username','email','first_name','last_name','contact_number','designation')
+
+        

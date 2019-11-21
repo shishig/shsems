@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} Delete Event {% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-body shadow p-3 mb-2 bg-light rounded">
+            <form method="post">
+                {% csrf_token %}
+                <p>Are you sure you want to delete "{{ event }}"?</p>
+                <input type="submit" value="Confirm">
+            </form>
+    </div>
+</div>
+
+{% endblock %}
+
+
+

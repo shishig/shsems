@@ -4,9 +4,8 @@
 
 {% block content %}
 
-
-
 <div class="card">
+
     <div class="card-body shadow p-3 mb-2 bg-light rounded">
         <h4 class="card-title">{{ event }}</h4>
         
@@ -14,14 +13,22 @@
                 {{ event.description }}
         </p>
 
-        {% if user.is_authenticated %}
-        <a href="" class="card-link">Join</a>
-        <a href="" class="card-link">Check Participants</a>
+        {% if user.is_authenticated  %}
+        <a class="btn btn-outline-success" href="" class="card-link">Join</a>
+        <a class="btn btn-outline-primary" href="" class="card-link">Check Participants</a>
+        <a class="btn btn-outline-primary" href="{% url 'edit' event.pk %}" class="card-link">Edit</a>
+        <a class="btn btn-outline-warning" href="{% url 'delete' event.pk %}" class="card-link">Delete Event</a>
         {% else %}
         {% endif %}
-        <a href="{% url 'events_list' %}" class="card-link">Back</a>
+        <a class="btn btn-outline-secondary" href="{% url 'events_list' %}" class="card-link">Back</a>
+
+        <div class="card-footer">
+            <p> Start Date of the Event: {{ event.date_from }} Ends on: {{ event.date_to }}</p>
+            <p> Start Time of the Event: {{ event.time_from }} to {{ event.time_to }}</p>
+        </div>
 
     </div>
+
 </div>
 
 {% endblock %}

@@ -4,9 +4,10 @@
 
 {% block content %}
 
-<h1 style="color: white;">Events Created</h1>
+<h1>Events Created</h1>
 
-<input class="form-control" id="addBtn" type="button" value="Add Event">
+<a class="btn btn-outline-primary" href="{% url 'create_event' %}">Add New Event</a>
+
 <div class="card">
     
     {% for event in object_list %}
