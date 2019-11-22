@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from .models import Event
 from .forms import EventCreateForm, EventUpdateForm, EventDeleteForm, EventShowParticipantForm
@@ -32,27 +32,24 @@ class MyEventCreateView(LoginRequiredMixin, CreateView):
         form.instance.creator = self.request.user
         return super().form_valid(form)
 
-class EventUpdateView(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
+class EventUpdateView(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
     model = Event
     form_class = EventUpdateForm
     template_name = "event_update.html"
-    permission_required = ('post.can_update')
     success_url = reverse_lazy("my_events_list")
 
-    def form_valid(self, form):
-        form.instance.creator = self.request.user
-        return super().form_valid(form)
+    def test_func(self):
+        return self.get_object().creator == self.request.user
 
-class EventDeleteView(LoginRequiredMixin,PermissionRequiredMixin, DeleteView):
+
+class EventDeleteView(LoginRequiredMixin,UserPassesTestMixin, DeleteView):
     model = Event
     form_class = EventDeleteForm
     template_name = "event_delete.html"
-    permission_required = ('post.can_delete')
     success_url = reverse_lazy("my_events_list")
 
-    def form_valid(self, form):
-        form.instance.creator = self.request.user
-        return super().form_valid(form)
+    def test_func(self):
+        return self.get_object().creator == self.request.user
 
 class EventShowParticipantView(LoginRequiredMixin, ListView):
     model = Event

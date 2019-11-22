@@ -8,6 +8,11 @@
 
     <div class="card-body shadow p-3 mb-2 bg-light rounded">
         <h4 class="card-title">{{ event }}</h4>
+
+        {% if event.poster %}        
+        <img width="500px" src="/media/{{ event.poster }}" />
+        {% else %}    
+        {% endif %}  
         
         <p class="card-text">
                 {{ event.description }}

@@ -4,9 +4,10 @@
 
 {% block content %}
 
+<h1>Events</h1>
 
-<a class="btn btn-outline-primary" href="{% url 'create_event' %}">Add New Event</a>
-<div class="card">
+<a class="btn btn-warning" href="{% url 'create_event' %}">Add New Event</a>
+<div class="card my-2">
     
     {% for event in object_list %}
 
@@ -14,7 +15,7 @@
         <h4 class="card-title">{{ event }}</h4>
 
         {% if event.poster %}        
-        <img width="100px" src="/media/{{ event.poster }}" />
+        <img width="500px" src="/media/{{ event.poster }}" />
         {% else %}    
         {% endif %}    
 

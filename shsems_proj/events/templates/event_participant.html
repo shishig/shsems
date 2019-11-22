@@ -16,23 +16,16 @@
             <th>Last Name</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="background-color: white;">
             {% for event in object_list %}
                 <tr>
                    <td>{{ event.all_participants }}</td>
                    <td>{{ event.f_participants }}</td>
                    <td>{{ event.l_participants }}</td>
-
                 </tr>
             {% endfor %}
         </tbody>
     </table>
-    
-
-    <div class="card-body shadow p-3 mb-2 bg-light rounded">
-        
-
-    </div>
    
 </div>
 

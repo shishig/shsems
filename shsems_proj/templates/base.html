@@ -14,22 +14,13 @@
         background: rgb(252,252,252);
         background: radial-gradient(circle, rgba(252,252,252,0.926079831932774) 0%, rgba(187,153,69,0.6348914565826331) 100%);
       }
-      .card{
-        margin-top: 50px;
-      }
-      #addBtn{
-        position: relative;
-        top: 30px;
-        left: 1010px;
-        width: 100px;
-      }
       a{
         margin-left: 10px;
       }
       body{
-          background-color: white;
+        background-image: url("/media/images/bg1.jpg");
+        background-size: cover;
       }
-      
     </style>
 
   </head>
@@ -51,7 +42,7 @@
 
           {% if user.is_authenticated %}
           <li class="nav-item">
-              <a class="nav-link" href="{% url 'my_events_list' %}">MyEvents</a>
+              <a class="nav-link" href="{% url 'my_events_list' %}">My Events</a>
           </li>
           {% else %}
           {% endif %}
@@ -59,12 +50,12 @@
         {% if user.is_authenticated %}
           <form class="form-inline my-4 my-lg-0 navBtns"> 
             <a>{{ user }}</a> 
-            <a class="btn btn-outline-danger" href="{% url 'logout' %}">Log Out</a>
+            <a class="btn btn-danger" href="{% url 'logout' %}">Log Out</a>
           </form>
         {% else %}
           <form class="form-inline my-4 my-lg-0 navBtns"> 
-            <a class="btn btn-outline-success" href="{% url 'signup' %}">Sign Up</a> 
-            <a class="btn btn-outline-success" href="{% url 'login' %}">Login</a> 
+            <a class="btn btn-success" href="{% url 'signup' %}">Sign Up</a> 
+            <a class="btn btn-success" href="{% url 'login' %}">Login</a> 
           </form>
         {% endif %}
       </div>
